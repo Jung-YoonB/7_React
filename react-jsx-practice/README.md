@@ -1,25 +1,16 @@
-# React JSX 실습
+# React + Vite
 
-## 시작하기
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-**프로젝트 생성**
-```bash
-- Project Name : 프로젝트명
-- Framework : React
-- Variant : JavaScript
-- Linter : ESLint
-```
+Currently, two official plugins are available:
 
-**프로젝트 실행**
-```bash
-npm install     # 최초 1회
-npm run dev     # 실행 위치 => 프로젝트 루트 경로 (package.json 파일이 존재해야 함)
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-**문법 오류 확인(테스트)**
-```bash
-npm run lint
-```
+## React Compiler
 
-**프로젝트 실행 종료**
-`ctrl` + `C` => 종료하시겠습니까? `Y` 입력
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
