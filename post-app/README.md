@@ -11,3 +11,10 @@ npm install 라이브러리명
 - zustand
 - react-router-dom
 - styled-components
+
+## 라우팅 구조
+- `/`                   : Home
+- `/posts`              : PostListPage
+- `/posts/:id/edit`     : EditPostPage
+- `/posts/new`          : NewPostPage
+- `*`                   : NotFoundPage
