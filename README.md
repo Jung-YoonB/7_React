@@ -4,6 +4,7 @@
 
 **프로젝트 생성**
 ```bash
+npm create vite@latest
 - Project Name : 프로젝트명
 - Framework : React
 - Variant : JavaScript

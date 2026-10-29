@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
 import { Card, PageTitle } from '../styles/common'
+import { useTodoStore } from '../store/useTodoStore'
+import { CATEGORIES, CATEGORIES_KEYS } from '../constants'
+import TodoList from '../components/TodoList'
 
 const Stats = styled.div`
   display: grid;
@@ -40,6 +43,21 @@ const CategoryCard = styled(Link)`
 `
 
 function DashboardPage() {
+    const todos = useTodoStore((state) => state.todos)
+
+    // 전체 개수
+    const totalCount = todos.length
+
+    // 완료 개수
+    const doneCount = todos.filter((todo) => todo.done).length
+
+    // 남은 일 개수
+    const remainCount = totalCount - doneCount
+
+    // createdAt 최신 순 정렬 최근 할 일
+    // ※ 주의 : sort 는 원본 배열 변경 -> [...todos] 로 copy 후 정렬
+    const recentTodos = [...todos].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+
     return (
         <>
             <PageTitle>대시보드</PageTitle>
@@ -47,25 +65,34 @@ function DashboardPage() {
             <Stats>
                 <Card>
                     <div>전체</div>
-                    <StatNumber>0</StatNumber>
+                    <StatNumber>{totalCount}</StatNumber>
                 </Card>
                 <Card>
                     <div>완료</div>
-                    <StatNumber>0</StatNumber>
+                    <StatNumber>{doneCount}</StatNumber>
                 </Card>
                 <Card>
                     <div>남은 일</div>
-                    <StatNumber>0</StatNumber>
+                    <StatNumber>{remainCount}</StatNumber>
                 </Card>                
             </Stats>
 
             <SectionTitle>카테고리별</SectionTitle>
             <CategoryGrid>
+                {CATEGORIES_KEYS.map((key) => {
+                  const count = todos.filter((todo) => todo.category === key).length
 
+                  return (
+                    <CategoryCard key={key} to={`/category/${key}`}>
+                        <div>{CATEGORIES[key].label}</div>
+                        <StatNumber>{count}</StatNumber>
+                    </CategoryCard>
+                  )
+                })}
             </CategoryGrid>
 
             <SectionTitle>최근 할 일</SectionTitle>
-            {/* TODO : 할일 목록 표시 */}            
+            <TodoList todos={recentTodos} />
         </>
     )
 }

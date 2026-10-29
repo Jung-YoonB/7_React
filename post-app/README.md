@@ -1,0 +1,13 @@
+# post-app
+> 게시글 관리 (axios 연습)
+
+---
+
+## 추가 라이브러리
+```bash
+npm install 라이브러리명
+```
+- axios
+- zustand
+- react-router-dom
+- styled-components
